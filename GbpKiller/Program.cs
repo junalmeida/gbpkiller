@@ -61,7 +61,7 @@ namespace GbpKiller
 
             Console.WriteLine("Este removedor fará alterações no registro e apagará o GbpSv.");
             Console.WriteLine("Execute por sua conta em risco. NO WARRANTY.");
-            Console.Write("Todos os navegadores seão fechados. Deseja continuar? [S,N]");
+            Console.Write("Todos os navegadores seão fechados. Deseja continuar? [S,N] ");
             if (Console.ReadKey(false).KeyChar.ToString().ToUpper() != "S")
                 return;
             Console.WriteLine();
@@ -78,7 +78,10 @@ namespace GbpKiller
             Process.Start(new ProcessStartInfo()
             {
                 FileName = "bcdedit",
-                Arguments = "/deletevalue {current} safeboot"
+                Arguments = "/deletevalue {current} safeboot",
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardOutput = true
             }).WaitForExit();
             Process.Start(new ProcessStartInfo()
             {
